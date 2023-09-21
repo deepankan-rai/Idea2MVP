@@ -1,20 +1,13 @@
-package com.example.spring.model;
+package com.example.spring.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
-@Entity
-public class User {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class UserDto {
+
 	private Long userId;
 	private String username;
 	private String password;
 	
-	public User() {
+	public UserDto() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -42,13 +35,12 @@ public class User {
 		this.password = password;
 	}
 
-	public User(Long userId, String username, String password) {
+	public UserDto(Long userId, String username, String password) {
 		super();
 		this.userId = userId;
 		this.username = username;
 		this.password = password;
 	}
-	
 	
 	
 
