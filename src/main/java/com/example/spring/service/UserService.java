@@ -7,4 +7,6 @@ public interface UserService {
 
 	String addUser(UserDto userDto);
 	LoginResponse loginUser(LoginDto loginDto); 
+	
+	String updateUser(Long userId);
 }

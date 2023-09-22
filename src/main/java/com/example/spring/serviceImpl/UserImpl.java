@@ -58,4 +58,18 @@ public class UserImpl implements UserService{
 	
 	}
 
+	@Override
+	public String updateUser(Long userId) {
+		// TODO Auto-generated method stub
+		Optional<User> usr=userRepo.findById(userId);
+		if(usr.isPresent()) {
+			User user=new User();
+			userRepo.save(user);
+			return "Updated successfully";
+		}else {
+			return null;
+		}
+
+	}
+
 }

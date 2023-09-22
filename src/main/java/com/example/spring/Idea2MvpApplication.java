@@ -9,5 +9,8 @@ public class Idea2MvpApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(Idea2MvpApplication.class, args);
 	}
+	
+	
+	
 
 }

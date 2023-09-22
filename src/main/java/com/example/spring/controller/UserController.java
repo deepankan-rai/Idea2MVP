@@ -1,9 +1,15 @@
 package com.example.spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,6 +37,17 @@ public class UserController {
 	public ResponseEntity<?>loginuser(@RequestBody LoginDto loginDto){
 		LoginResponse loginResponse=userService.loginUser(loginDto);
 		return ResponseEntity.ok(loginResponse);
+	}
+	
+	@GetMapping("/detail")
+	public UserDetails getUserDetail(Authentication auth) {
+		return (UserDetails) auth.getPrincipal();
+	}
+	
+	@PutMapping("/update/{userId}")
+	public ResponseEntity<String> updateUserDetail(@PathVariable Long userId) {
+		userService.updateUser(userId);
+		return new ResponseEntity<String>("Updated Successfullly",HttpStatus.OK);
 	}
 	
 
